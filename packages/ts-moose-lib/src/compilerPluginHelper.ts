@@ -12,7 +12,9 @@ export const isMooseFile = (sourceFile: ts.SourceFile): boolean => {
     // workaround for e2e test
     location.includes("packages/ts-moose-lib/dist") ||
     // support local development with symlinked packages
-    location.includes("packages/ts-moose-lib/src")
+    location.includes("packages/ts-moose-lib/src") ||
+    // support vendored ts-moose-lib in CI
+    location.includes("vendor/ts-moose-lib")
   );
 };
 

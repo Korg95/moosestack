@@ -32,14 +32,9 @@ export const isNewMooseResourceWithTypeParam = (
     return false;
   }
 
-  const declaration: ts.Declaration | undefined =
-    checker.getResolvedSignature(node)?.declaration;
-
-  if (!declaration || !isMooseFile(declaration.getSourceFile())) {
-    return false;
-  }
   const sym = checker.getSymbolAtLocation(node.expression);
   const typeName = sym?.name ?? "";
+
   if (!typesToArgsLength.has(typeName)) {
     return false;
   }
